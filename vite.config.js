@@ -3,6 +3,7 @@ import { transformWithEsbuild } from 'vite'
 import restart from 'vite-plugin-restart'
 
 export default {
+    base: '/church_walters/',
     root: 'src/',
     publicDir: '../public/',
     plugins:
