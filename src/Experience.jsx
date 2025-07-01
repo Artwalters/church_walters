@@ -1,7 +1,9 @@
 import { Suspense, useRef, useState, useEffect } from 'react'
 import Placeholder from './Placeholder.jsx'
-import Hamburger from './Hamburger.jsx'
+import PortfolioClean from './PortfolioClean.jsx'
+import GodrayEffect from './GodrayEffect.jsx'
 import { useFrame, useThree } from '@react-three/fiber'
+import { EffectComposer } from '@react-three/postprocessing'
 
 export default function Experience({ rotation })
 {
@@ -82,11 +84,22 @@ export default function Experience({ rotation })
     })
     
     return <>
-        <directionalLight castShadow position={ [ 1, 2, 3 ] } intensity={ 4.5 } shadow-normalBias={ 0.04 } />
-        <ambientLight intensity={ 1.5 } />
+        {/* Centrale lamp boven camera */}
+        <pointLight 
+            position={ [0, 3, 0] } 
+            intensity={ 7.0 }
+            color="#ffffff"
+            distance={ 20 }
+            decay={ 2 }
+            castShadow
+        />
 
         <Suspense fallback={ <Placeholder position-y={ 0.5 } scale={ [ 2, 3, 2 ] } /> }>
-            <Hamburger scale={ 0.35 } />
+            <PortfolioClean scale={ 0.35 } />
         </Suspense>
+        
+        <EffectComposer>
+            <GodrayEffect />
+        </EffectComposer>
     </>
 }
