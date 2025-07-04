@@ -2,6 +2,7 @@ import './style.css'
 import ReactDOM from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
 import Experience from './Experience.jsx'
+import PerformanceMonitor from './FPSCounter.jsx'
 import { useState, useRef, useEffect } from 'react'
 
 function App() {
@@ -145,6 +146,7 @@ function App() {
                     position: [ - 4, 3, 6 ]
                 } }
             >
+                <PerformanceMonitor />
                 <Experience rotation={rotation} />
             </Canvas>
             

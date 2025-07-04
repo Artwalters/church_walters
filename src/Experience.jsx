@@ -2,6 +2,7 @@ import { Suspense, useRef, useState, useEffect } from 'react'
 import Placeholder from './Placeholder.jsx'
 import PortfolioClean from './PortfolioClean.jsx'
 import GodrayEffect from './GodrayEffect.jsx'
+import ProjectCubes from './ProjectCubes.jsx'
 import { useFrame, useThree } from '@react-three/fiber'
 import { EffectComposer } from '@react-three/postprocessing'
 
@@ -87,15 +88,17 @@ export default function Experience({ rotation })
         {/* Centrale lamp boven camera */}
         <pointLight 
             position={ [0, 3, 0] } 
-            intensity={ 7.0 }
+            intensity={ 0.0 }
             color="#ffffff"
             distance={ 20 }
             decay={ 2 }
             castShadow
         />
 
+        <ProjectCubes />
+        
         <Suspense fallback={ <Placeholder position-y={ 0.5 } scale={ [ 2, 3, 2 ] } /> }>
-            <PortfolioClean scale={ 0.35 } />
+            <PortfolioClean scale={ 0.35 } position={[0, 0, 0]} />
         </Suspense>
         
         <EffectComposer>
