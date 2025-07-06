@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
 import Experience from './Experience.jsx'
 import PerformanceMonitor from './FPSCounter.jsx'
+import IntroPage from './IntroPage.jsx'
 import { useState, useRef, useEffect } from 'react'
 
 function App() {
+    const [currentPage, setCurrentPage] = useState('intro') // Start met intro pagina
     const [rotation, setRotation] = useState(30)
     const [isAnimating, setIsAnimating] = useState(false)
     const touchStartRef = useRef(null)
@@ -135,6 +137,12 @@ function App() {
         }
     }, [isAnimating])
     
+    // Render intro pagina
+    if (currentPage === 'intro') {
+        return <IntroPage onEnter={() => setCurrentPage('portfolio')} />
+    }
+    
+    // Render portfolio pagina
     return (
         <div ref={containerRef} style={{ width: '100vw', height: '100vh', touchAction: 'pan-y' }}>
             <Canvas

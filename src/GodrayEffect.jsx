@@ -61,6 +61,10 @@ class GodrayEffectImpl extends Effect {
   update(renderer, inputBuffer, deltaTime) {
     this.uniforms.get('time').value += deltaTime
   }
+  
+  setIntensity(intensity) {
+    this.uniforms.get('intensity').value = intensity
+  }
 }
 
 export const GodrayEffect = forwardRef((props, ref) => {
